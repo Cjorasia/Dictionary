@@ -33,7 +33,7 @@ def translate():
     elif word.get().upper() in data:
         return data[word.get().upper()]
     elif len(get_close_matches(word.get(), data.keys())) > 0:
-        print(f"did you mean {get_close_matches(word.get(), data.keys())} instead" )
+        return (f"did you mean {get_close_matches(word.get(), data.keys())[0]} instead" )
         decide = input("y for yes or n for no")
         if decide == "y":
             return data[get_close_matches(word.get(), data.keys())[0]]
