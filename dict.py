@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.title = "Dictionary"
+root.title("Dictionary")
 
 word = StringVar()
 
@@ -21,17 +21,6 @@ def ExitApplication():
 #=========================================================================================================================#
 
 # exit button
-ext = Button (root, text='Exit',command=ExitApplication,bg='brown',fg='white')
-ext.pack()
-
-# enter word Label
-lbl = Label(root, text = "Enter word")
-lbl.pack(side = LEFT)
-
-# Word Input
-ent = Entry(root, bd = 5, textvariable = word)
-ent.pack(side = RIGHT)
-ent.focus()
 
                             # TRANSLATE FUNCTION # 
 #=================================================================================================#
@@ -77,8 +66,21 @@ def result():
         messagebox.showinfo("Meaning", output)
 #======================================================================================================#
 
+ext = Button (root, text='Exit',command=ExitApplication,bg='#D50000',fg='white',activebackground='#EA0000',activeforeground="white",cursor="hand2")
+ext.pack(side = RIGHT)
+
+# enter word Label
+lbl = Label(root, text = "Enter word")
+lbl.pack(side = LEFT)
+
+# Word Input
+ent = Entry(root, bd = 3, textvariable = word)
+ent.pack(side = LEFT)
+ent.focus()
+
+
 # search button
-search = Button(root , text = "Search", command = result)
-search.pack()
+search = Button(root , text = "Search", command = result, bg='skyblue',fg='black',cursor="hand2")
+search.pack(side = RIGHT)
 
 root.mainloop()
