@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.title = "Dictionary"
+root.title("Dictionary")
 
 word = StringVar()
 
@@ -66,7 +66,7 @@ def result():
         messagebox.showinfo("Meaning", output)
 #======================================================================================================#
 
-ext = Button (root, text='Exit',command=ExitApplication,bg='#D50000',fg='white',activebackground='#EA0000',activeforeground="white")
+ext = Button (root, text='Exit',command=ExitApplication,bg='#D50000',fg='white',activebackground='#EA0000',activeforeground="white",cursor="hand2")
 ext.pack(side = RIGHT)
 
 # enter word Label
@@ -80,7 +80,7 @@ ent.focus()
 
 
 # search button
-search = Button(root , text = "Search", command = result, bg='skyblue',fg='black')
+search = Button(root , text = "Search", command = result, bg='skyblue',fg='black',cursor="hand2")
 search.pack(side = RIGHT)
 
 root.mainloop()
