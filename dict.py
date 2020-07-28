@@ -1,4 +1,5 @@
 import json
+from difflib import get_close_matches
 
 data = json.load(open("data.json"))
 
@@ -12,9 +13,20 @@ def translate(word):
         return data[word.title()]
     elif word.upper() in data:
         return data[word.upper()]
+    elif len(get_close_matches(word, data.keys())) > 0:
+        print("did you mean %s instead" %get_close_matches(word, data.keys()[0]))
+        decide = input("y for yes or n for no")
+        if decide == "y":
+            return data[get_close_matches(word, data.keys())[0]]
+        elif decide == "n":
+            return ("maybe you have misspelled word!")
+        else:
+            return ("wrong input!!!")
+    else:
+        return ("check spelling and try again!")
 
 output = translate(word)
-print("meaning-->")
+print("Meaning-->")
 if type(output)== list:
     for item in output:
         print(item)
