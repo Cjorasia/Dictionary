@@ -2,4 +2,12 @@ import json
 
 data = json.load(open("data.json"))
 
-print(data["smog"])
+
+word = input("Enter word here: ")
+
+def translate(word):
+    if word in data:
+        return data[word]
+
+
+print(translate(word))
