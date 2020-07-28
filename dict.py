@@ -12,8 +12,10 @@ word = StringVar()
 #=========================================================================================================================#
 def ExitApplication():
     MsgBox = messagebox.askquestion ('Exit Application','Are you sure you want to exit the application',icon = 'warning')
+
     if MsgBox == 'yes':
        root.destroy()
+
     else:
         messagebox.showinfo('Return','You will now return to the application screen')
 #=========================================================================================================================#
@@ -39,19 +41,22 @@ def translate():
 
     if word.get() in data:
         return data[word.get()]
+
     elif word.get().title() in data:
         return data[word.get().title()]
+
     elif word.get().upper() in data:
         return data[word.get().upper()]
+
+    elif word.get().lower() in data:
+        return data[word.get().lower()]
+
     elif len(get_close_matches(word.get(), data.keys())) > 0:
-        return (f"did you mean {get_close_matches(word.get(), data.keys())[0]} instead" )
-        decide = input("y for yes or n for no")
-        if decide == "y":
+        decide = messagebox.askyesno("No Match Found!",f"did you mean {get_close_matches(word.get(), data.keys())[0]} instead")
+        if decide == True:
             return data[get_close_matches(word.get(), data.keys())[0]]
-        elif decide == "n":
+        elif decide == False:
             return ("maybe you have misspelled word!")
-        else:
-            return ("wrong input!!!")
 
     else:
         return ("check spelling and try again!")
@@ -63,9 +68,11 @@ data = json.load(open("data.json"))
 #=====================================================================================================#
 def result():
     output = translate()
+
     if type(output)== list:
         for item in output:
             messagebox.showinfo("Meaning",item)
+
     else:
         messagebox.showinfo("Meaning", output)
 #======================================================================================================#
