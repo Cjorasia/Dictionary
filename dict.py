@@ -8,8 +8,18 @@ root.title = "Dictionary"
 
 word = StringVar()
 
+                            # EXIT FUNCTION #
+#=========================================================================================================================#
+def ExitApplication():
+    MsgBox = messagebox.askquestion ('Exit Application','Are you sure you want to exit the application',icon = 'warning')
+    if MsgBox == 'yes':
+       root.destroy()
+    else:
+        messagebox.showinfo('Return','You will now return to the application screen')
+#=========================================================================================================================#
+
 # exit button
-ext = Button(root , text = "Exit", command = root.destroy)
+ext = Button (root, text='Exit',command=ExitApplication,bg='brown',fg='white')
 ext.pack()
 
 # enter word Label
@@ -21,7 +31,8 @@ ent = Entry(root, bd = 5, textvariable = word)
 ent.pack(side = RIGHT)
 ent.focus()
 
-#=================================================================================================
+                            # TRANSLATE FUNCTION # 
+#=================================================================================================#
 def translate():
 
     global word
@@ -44,11 +55,12 @@ def translate():
 
     else:
         return ("check spelling and try again!")
-#========================================================================================================
+#====================================================================================================#
 
 data = json.load(open("data.json"))
 
-#========================================================================================================
+                                # RESULT FUNCTION #
+#=====================================================================================================#
 def result():
     output = translate()
     if type(output)== list:
@@ -56,7 +68,7 @@ def result():
             messagebox.showinfo("Meaning",item)
     else:
         messagebox.showinfo("Meaning", output)
-#=========================================================================================================
+#======================================================================================================#
 
 # search button
 search = Button(root , text = "Search", command = result)
